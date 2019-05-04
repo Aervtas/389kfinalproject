@@ -4,8 +4,8 @@ var logger = require('morgan');
 var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var dotenv = require('dotenv');
-var Movie = require('./models/Movie');
-
+var Game = require('./models/Game');
+var Music = require('./models/Music');
 var app = express();
 
 // Load envirorment variables
@@ -34,6 +34,8 @@ app.use('/public', express.static('public'));
 app.get('/',function(req,res){
   res.render('home',{});
 })
+
+
 
 app.listen(process.env.PORT || 3000, function() {
     console.log('Listening!');
