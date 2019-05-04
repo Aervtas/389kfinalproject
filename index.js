@@ -35,8 +35,7 @@ app.get('/',function(req,res){
   res.render('home',{});
 })
 
-
-
+// Listening here
 app.listen(process.env.PORT || 3000, function() {
     console.log('Listening!');
 });
