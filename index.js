@@ -34,9 +34,22 @@ app.use('/public', express.static('public'));
 //Let's hope nothing breaks
 
 app.get('/',function(req,res){
-  res.render('home',{
-
+  Game.find({}, function(err, games){
+    if (err) {
+      throw err;
+    }
+    Music.find({}, function(err, musics){
+      if (err) {
+        throw err;
+      }
+      res.render('home',{
+        gdata: games,
+        mdata: musics
+      });
+    });
   });
+
+
 });
 
 app.get('/game', function(req, res){
@@ -88,8 +101,8 @@ app.get('/api/gamereviews', function(req, res){
     if (err) {
       throw err;
     }
-    return res.send(games)
-  })
+    return res.send(games);
+  });
 });
 
 app.get('/api/musicreviews', function(req, res){
@@ -97,8 +110,8 @@ app.get('/api/musicreviews', function(req, res){
     if (err) {
       throw err;
     }
-    return res.send(musics)
-  })
+    return res.send(musics);
+  });
 });
 
 // Listening here

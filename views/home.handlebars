@@ -1,4 +1,36 @@
 <div class="row">
-  <div class="column"></div>
-  <div class="column"></div>
+  <div class="column">
+    {{#each gdata}}
+    <article class="article_container">
+      <h2 class="title">{{this.title}}</h2>
+      <h4 class="name">By: {{this.company}}, {{this.year}}</h4>
+      <hr>
+      <div class="tags">
+        {{this.genre}}
+      </div>
+    </article>
+    {{else}}
+    <article>
+      <h1>There are no game reviews yet.</h1>
+      <a href="/addReview">Write your first review!</a>
+    </article>
+    {{/each}}
+  </div>
+  <div class="column">
+    {{#each mdata}}
+    <article class="article_container">
+      <h2 class="title">{{this.title}}</h2>
+      <h4 class="name">By: {{this.composer}}, {{this.year}}</h4>
+      <hr>
+      <div class="tags">
+        {{this.genre}}
+      </div>
+    </article>
+    {{else}}
+    <article>
+      <h1>There are no music reviews yet.</h1>
+      <a href="/addReview">Write your first review!</a>
+    </article>
+    {{/each}}
+  </div>
 </div>
