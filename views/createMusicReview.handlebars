@@ -1,22 +1,18 @@
-<h1>Add New Music to Database</h1>
+<h1>Add New Review On {{data.title}}</h1>
 <article>
-    <form method="POST" action="/music">
+    <form method="POST" action="/music/{{data._id}}/review">
         <div class="input-field">
-            <label>Title:</label>
-            <input type="text" name="title" size="50" placeholder="1812 Overture">
+            <label>Rating:</label>
+            <input type="number" name="rating" min="0" max="5" step=".1" placeholder="3">
         </div>
          <div class="input-field">
-            <label>Genre:</label>
-            <input type="text" name="genre" size="50" placeholder="Genre1 Genre2 Genre3">
+            <label>Comment:</label>
+            <input type="text" name="comment" size="100" placeholder="It was great!">
         </div>
         <div class="input-field">
-           <label>Year:</label>
-           <input type="number" name="year" min="0" max="2019" placeholder="1880">
+           <label>Written by:</label>
+           <input type="text" name="author" size="50" placeholder="Your name">
        </div>
-        <div class="input-field">
-            <label>Composer:</label>
-            <input type="text" name="composer" size="50" placeholder="Tchaikovsky">
-        </div>
-        <button type="submit">Create Music</button>
+        <button type="submit">Create Music Review</button>
     </form>
 </article>

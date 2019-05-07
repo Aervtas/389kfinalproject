@@ -122,7 +122,7 @@ app.get('/game/:id/review', function(req, res){
       res.render('notFound');
     } else {
       res.render('createGameReview', {
-        data: game.title
+        data: game
       });
     }
 
@@ -143,7 +143,8 @@ app.post('/game/:id/review', function(req, res) {
         game.reviews = game.reviews.concat([review])
         game.save(function(err){
             if (err) throw err
-            return res.send("Game review added!")
+            console.log("Game review added!");
+            return res.redirect('/');
         })
     });
 });
@@ -152,11 +153,11 @@ app.get('/music/:id/review', function(req, res){
   Music.findOne({_id: req.params.id}, function(err, music){
     if (err) {
       res.render('notFound');
-    } else if (!game) {
+    } else if (!music) {
       res.render('notFound');
     } else {
       res.render('createMusicReview', {
-        data: music.title
+        data: music
       });
     }
 
@@ -177,7 +178,8 @@ app.post('/music/:id/review', function(req, res) {
         music.reviews = music.reviews.concat([review])
         music.save(function(err){
             if (err) throw err
-            return res.send("Music review added!")
+            console.log("Music review added!");
+            return res.redirect('/');
         })
     });
 });

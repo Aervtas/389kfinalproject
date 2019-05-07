@@ -1,22 +1,18 @@
-<h1>Add New Review to {{data}}</h1>
+<h1>Add New Review On {{data.title}}</h1>
 <article>
-    <form method="POST" action="/game">
+    <form method="POST" action="/game/{{data._id}}/review">
         <div class="input-field">
-            <label>Title:</label>
-            <input type="text" name="title" size="50" placeholder="Minesweeper">
+            <label>Rating:</label>
+            <input type="number" name="rating" min="0" max="5" step=".1" placeholder="3">
         </div>
          <div class="input-field">
-            <label>Genre:</label>
-            <input type="text" name="genre" size="50" placeholder="Genre1 Genre2 Genre3">
+            <label>Comment:</label>
+            <input type="text" name="comment" size="100" placeholder="It was great!">
         </div>
         <div class="input-field">
-           <label>Year:</label>
-           <input type="number" name="year" min="0" max="2019" placeholder="Date">
+           <label>Written by:</label>
+           <input type="text" name="author" size="50" placeholder="Your name">
        </div>
-        <div class="input-field">
-            <label>Company:</label>
-            <input type="text" name="company" size="50" placeholder="Microsoft">
-        </div>
-        <button type="submit">Create Game</button>
+        <button type="submit">Create Game Review</button>
     </form>
 </article>
