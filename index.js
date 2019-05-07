@@ -192,6 +192,28 @@ app.get('/about', function(req, res) {
   res.render('about');
 });
 
+app.delete('/game/:id', function(req, res){
+  Game.findByIdAndRemove(req.param.id, function(err, game){
+    if (!game) {
+      res.render('notFound');
+    } else {
+      console.log("game removed");
+      res.redirect('/');
+    }
+  });
+});
+
+app.delete('/music/:id', function(req, res){
+  Music.findByIdAndRemove(req.param.id, function(err, music){
+    if (!music) {
+      res.render('notFound');
+    } else {
+      console.log("music removed");
+      res.redirect('/');
+    }
+  });
+});
+
 io.on('connection', function(socket) {
     console.log('NEW connection.');
     socket.on('new game', function(msg) {
