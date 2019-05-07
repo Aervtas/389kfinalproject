@@ -184,6 +184,10 @@ app.post('/music/:id/review', function(req, res) {
     });
 });
 
+app.get('/about', function(req, res) {
+  res.render('about');
+});
+
 // Listening here
 app.listen(process.env.PORT || 3000, function() {
     console.log('Listening!');
