@@ -57,3 +57,13 @@ article {
     margin-bottom: 30px;
     outline-style: solid;
 }
+
+#nono {
+  color: #111;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 275px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+}

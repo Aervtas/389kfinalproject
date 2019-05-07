@@ -115,13 +115,23 @@ app.get('/api/musicreviews', function(req, res){
 });
 
 app.get('/game/:id/review', function(req, res){
-  res.render("createGameReview");
+  Game.findOne({_id: req.params.id}, function(err, game){
+    if (err) {
+      res.render('notFound');
+    } else if (!game) {
+      res.render('notFound');
+    } else {
+      res.render('createGameReview', {
+        data: game.title
+      });
+    }
+
+  });
 });
 
 app.post('/game/:id/review', function(req, res) {
-    Movie.findOne({_id: req.params.id}, function(err, game){
+    Game.findOne({_id: req.params.id}, function(err, game){
         if(err) throw err
-        if(!game) return res.send("No game of id exists")
         var review = {
             rating: parseFloat(req.body.rating),
             comment: req.body.comment,
@@ -130,10 +140,44 @@ app.post('/game/:id/review', function(req, res) {
         /* mongo $pushAll is deprecated (mongoose.push builds ontop of $pushall)
             instead we use .concat()
         */
-        movie.reviews = movie.reviews.concat([review])
-        movie.save(function(err){
+        game.reviews = game.reviews.concat([review])
+        game.save(function(err){
             if (err) throw err
-            return res.send("Movie review added!")
+            return res.send("Game review added!")
+        })
+    });
+});
+
+app.get('/music/:id/review', function(req, res){
+  Music.findOne({_id: req.params.id}, function(err, music){
+    if (err) {
+      res.render('notFound');
+    } else if (!game) {
+      res.render('notFound');
+    } else {
+      res.render('createMusicReview', {
+        data: music.title
+      });
+    }
+
+  });
+});
+
+app.post('/music/:id/review', function(req, res) {
+    Music.findOne({_id: req.params.id}, function(err, music){
+        if(err) throw err
+        var review = {
+            rating: parseFloat(req.body.rating),
+            comment: req.body.comment,
+            author: req.body.author
+        }
+        /* mongo $pushAll is deprecated (mongoose.push builds ontop of $pushall)
+            instead we use .concat()
+        */
+        music.reviews = music.reviews.concat([review])
+        music.save(function(err){
+            if (err) throw err
+            return res.send("Music review added!")
         })
     });
 });
