@@ -34,8 +34,72 @@ app.use('/public', express.static('public'));
 //Let's hope nothing breaks
 
 app.get('/',function(req,res){
-  res.render('home',{});
-})
+  res.render('home',{
+
+  });
+});
+
+app.get('/game', function(req, res){
+  res.render('createGame');
+});
+
+app.get('/music', function(req, res){
+  res.render('createMusic');
+});
+
+//post endpoint for games
+app.post('/game', function(req, res) {
+  var game = new Game({
+      title: req.body.title,
+      genre: req.body.genre.split(" "),
+      year: parseInt(req.body.year),
+      company: req.body.company,
+      reviews: []
+  })
+
+  game.save(function(err) {
+      if(err) throw err
+      //return res.send("Game uploaded!");
+      console.log("Game uploaded!");
+      return res.redirect('/');
+  })
+});
+
+//post endpoint for music
+app.post('/music', function(req, res) {
+  var music = new Music({
+      title: req.body.title,
+      genre: req.body.genre.split(" "),
+      year: parseInt(req.body.year),
+      composer: req.body.composer,
+      reviews: []
+  })
+
+  music.save(function(err) {
+      if(err) throw err
+      //return res.send("Music uploaded!")
+      console.log("Music uploaded!");
+      return res.redirect('/');
+  })
+});
+
+app.get('/api/gamereviews', function(req, res){
+  Game.find({}, function(err, games){
+    if (err) {
+      throw err;
+    }
+    return res.send(games)
+  })
+});
+
+app.get('/api/musicreviews', function(req, res){
+  Music.find({}, function(err, musics){
+    if (err) {
+      throw err;
+    }
+    return res.send(musics)
+  })
+});
 
 // Listening here
 app.listen(process.env.PORT || 3000, function() {

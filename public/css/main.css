@@ -25,3 +25,31 @@ li a {
 li a:hover {
   background-color: #111;
 }
+
+button {
+	border: none;
+	padding: 10px;
+	background-color: #333;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+button:hover {
+  background-color: #bc5a45;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
