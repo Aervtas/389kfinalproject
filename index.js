@@ -31,6 +31,8 @@ app.use('/public', express.static('public'));
      process.exit(1);
  });
 
+//Let's hope nothing breaks
+
 app.get('/',function(req,res){
   res.render('home',{});
 })
