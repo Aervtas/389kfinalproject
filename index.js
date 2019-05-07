@@ -7,6 +7,8 @@ var dotenv = require('dotenv');
 var Game = require('./models/Game');
 var Music = require('./models/Music');
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 // Load envirorment variables
 dotenv.config();
@@ -188,7 +190,14 @@ app.get('/about', function(req, res) {
   res.render('about');
 });
 
+io.on('connection', function(socket) {
+    console.log('NEW connection.');
+    socket.on('disconnect', function(){
+        console.log('A user disconnected.');
+      });
+});
+
 // Listening here
-app.listen(process.env.PORT || 3000, function() {
+http.listen(process.env.PORT || 3000, function() {
     console.log('Listening!');
 });
