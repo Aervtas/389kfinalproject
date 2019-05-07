@@ -76,6 +76,7 @@ app.post('/game', function(req, res) {
       if(err) throw err
       //return res.send("Game uploaded!");
       console.log("Game uploaded!");
+      io.emit('new game', game);
       return res.redirect('/');
   })
 });
@@ -94,6 +95,7 @@ app.post('/music', function(req, res) {
       if(err) throw err
       //return res.send("Music uploaded!")
       console.log("Music uploaded!");
+      io.emit('new music', music);
       return res.redirect('/');
   })
 });
@@ -192,6 +194,10 @@ app.get('/about', function(req, res) {
 
 io.on('connection', function(socket) {
     console.log('NEW connection.');
+    socket.on('new game', function(msg) {
+        console.log('msg');
+        io.emit('new game', msg)
+    });
     socket.on('disconnect', function(){
         console.log('A user disconnected.');
       });

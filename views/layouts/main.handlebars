@@ -27,6 +27,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
   <script>
     var socket = io();
+    $('#gEmit').submit(function(){
+      socket.emit('new game', $('.title').val());
+    });
+    socket.on('new game', function(game) {
+      alert("A new game was added to the database: " + game.title);
+    });
+    socket.on('new music', function(music) {
+      alert("New music was added to the database: " + music.title);
+    });
     $('#SearchGame').keyup(function(){
       $(".garticle_container").remove();
       var game = $("#SearchGame").val();
