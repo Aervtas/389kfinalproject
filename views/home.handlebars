@@ -1,5 +1,8 @@
+<h1>Welcome</h1>
 <div class="row">
   <div class="column" id="gameCol">
+    <input type="text" id="SearchGame" placeholder="Enter a Game">
+    <br>
     {{#each gdata}}
     <article class="garticle_container">
       <h2 class="title">{{this.title}}</h2>
@@ -17,6 +20,8 @@
     {{/each}}
   </div>
   <div class="column" id="musicCol">
+    <input type="text" id="SearchMusic" placeholder="Enter a Music">
+    <br>
     {{#each mdata}}
     <article class="marticle_container">
       <h2 class="title">{{this.title}}</h2>

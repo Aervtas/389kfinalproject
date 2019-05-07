@@ -16,22 +16,12 @@
         <li><a href="/Alphabetical">Add Music Review</a></li>
         <li><a href="/Championships">Game Tags</a></li>
         <li><a href="/Championships">Music Tags</a></li>
+        <li><a href="/Championships">Most Reviewed Game</a></li>
+        <li><a href="/Championships">Most Reviewed Music</a></li>
     </ul>
 </div>
 
 <body>
-  <h1>Welcome</h1>
-  <br>
-  <div class="row">
-    <div class="column">
-      <input type="text" id="SearchGame" placeholder="Enter a Game">
-      <br>
-    </div>
-    <div class="column">
-      <input type="text" id="SearchMusic" placeholder="Enter a Music">
-      <br>
-    </div>
-  </div>
   {{{body}}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
   <script>
@@ -45,6 +35,8 @@
         $.each(result, function(index, element) {
           if(element['title'].includes(game)){
             $("#gameCol").append("<article class=\"garticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['company']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
+          } else {
+            $("#gameCol").append("<h1>No Match!</h1>");
           }
         });
       });
@@ -59,6 +51,8 @@
         $.each(result, function(index, element) {
           if(element['title'].includes(music)){
             $("#musicCol").append("<article class=\"marticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['composer']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
+          } else {
+            $("#musicCol").append("<h1>No Match!</h1>");
           }
         });
       });

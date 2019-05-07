@@ -114,6 +114,30 @@ app.get('/api/musicreviews', function(req, res){
   });
 });
 
+app.get('/game/:id/review', function(req, res){
+  res.render("createGameReview");
+});
+
+app.post('/game/:id/review', function(req, res) {
+    Movie.findOne({_id: req.params.id}, function(err, game){
+        if(err) throw err
+        if(!game) return res.send("No game of id exists")
+        var review = {
+            rating: parseFloat(req.body.rating),
+            comment: req.body.comment,
+            author: req.body.author
+        }
+        /* mongo $pushAll is deprecated (mongoose.push builds ontop of $pushall)
+            instead we use .concat()
+        */
+        movie.reviews = movie.reviews.concat([review])
+        movie.save(function(err){
+            if (err) throw err
+            return res.send("Movie review added!")
+        })
+    });
+});
+
 // Listening here
 app.listen(process.env.PORT || 3000, function() {
     console.log('Listening!');
