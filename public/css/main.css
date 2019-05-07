@@ -43,13 +43,17 @@ button:hover {
   background-color: #4CAF50;
 }
 
-.column {
-  float: left;
-  width: 50%;
+.row {
+  display: flex;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.column {
+  flex: 50%;
+}
+
+article {
+    padding: 10px;
+    background-color: #ecf0f1;
+    margin-bottom: 30px;
+    outline-style: solid;
 }

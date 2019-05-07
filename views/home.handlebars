@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="column">
+  <div class="column" id="gameCol">
     {{#each gdata}}
-    <article class="article_container">
+    <article class="garticle_container">
       <h2 class="title">{{this.title}}</h2>
       <h4 class="name">By: {{this.company}}, {{this.year}}</h4>
       <hr>
@@ -16,9 +16,9 @@
     </article>
     {{/each}}
   </div>
-  <div class="column">
+  <div class="column" id="musicCol">
     {{#each mdata}}
-    <article class="article_container">
+    <article class="marticle_container">
       <h2 class="title">{{this.title}}</h2>
       <h4 class="name">By: {{this.composer}}, {{this.year}}</h4>
       <hr>

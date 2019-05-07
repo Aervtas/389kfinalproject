@@ -35,14 +35,33 @@
   {{{body}}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
   <script>
-    $('#createNew').on('click', function() {
-      console.log("hi");
-    });
     $('#SearchGame').keyup(function(){
-
+      $(".garticle_container").remove();
+      var game = $("#SearchGame").val();
+      if(game == '') {
+        location.reload();
+      }
+      $.get("/api/gamereviews", function(result){
+        $.each(result, function(index, element) {
+          if(element['title'].includes(game)){
+            $("#gameCol").append("<article class=\"garticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['company']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
+          }
+        });
+      });
     });
-    $('#SearchMusic').keyup(function(){
-
+    $('#SearchMusic').on('keyup', function(event) {
+      $(".marticle_container").remove();
+      var music = $("#SearchMusic").val();
+      if(music == '') {
+        location.reload();
+      }
+      $.get("/api/musicreviews", function(result){
+        $.each(result, function(index, element) {
+          if(element['title'].includes(music)){
+            $("#musicCol").append("<article class=\"marticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['composer']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
+          }
+        });
+      });
     });
   </script>
 </body>
