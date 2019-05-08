@@ -1,1 +1,29 @@
-<h1 id="nono">404.</h1>
+<h1>{{data.title}}</h1>
+<hr>
+{{data.year}}
+<br>
+{{data.genre}}
+<br>
+{{#if data.company}}
+    {{data.company}}
+    <br>
+    <a href="/game/remove/{{{data._id}}}">Remove Game</a>
+{{else}}
+    {{data.composer}}
+    <a href="/music/remove/{{{data._id}}}">Remove Piece</a>
+{{/if}}
+<hr>
+{{#each data.reviews}}
+    <article
+        <h4 class="name">By: {{this.author}}, {{this.rating}}</h4>
+        <hr>
+        <div class="">
+            {{this.comment}}
+        </div>
+    </article>
+{{else}}
+<article>
+    <h1>There are no reviews on this game yet.</h1>
+    <a href="">Write your first review!</a>
+</article>
+{{/each}}
