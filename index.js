@@ -164,7 +164,6 @@ app.get('/music/:id/review', function(req, res){
         data: music
       });
     }
-
   });
 });
 
@@ -192,7 +191,29 @@ app.get('/about', function(req, res) {
   res.render('about');
 });
 
-app.delete('/game/:id', function(req, res){
+app.get('/game/remove/:id', function(req, res){
+    Game.findByIdAndRemove(req.param.id, function(err, game){
+      if (!game) {
+        res.render('notFound');
+      } else {
+        console.log("game removed");
+        res.redirect('/');
+      }
+    });
+});
+
+app.get('/music/remove/:id', function(req, res){
+    Music.findByIdAndRemove(req.param.id, function(err, music){
+      if (!music) {
+        res.render('notFound');
+      } else {
+        console.log("music removed");
+        res.redirect('/');
+      }
+    });
+});
+
+app.delete('/game/remove/:id', function(req, res){
   Game.findByIdAndRemove(req.param.id, function(err, game){
     if (!game) {
       res.render('notFound');
@@ -217,8 +238,7 @@ app.delete('/music/remove/:id', function(req, res){
 app.get('/game/:id', function(req, res){
   Game.findOne({_id: req.params.id}, function(err, game){
     res.render('display', {
-      data: game,
-      type: 1
+      data: game
     });
   });
 });
@@ -226,8 +246,7 @@ app.get('/game/:id', function(req, res){
 app.get('/music/:id', function(req, res){
   Music.findOne({_id: req.params.id}, function(err, music){
     res.render('display', {
-      data: music,
-      type: 2
+      data: music
     });
   });
 });
