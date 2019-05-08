@@ -9,20 +9,64 @@
 </head>
 <div class="nav">
     <ul>
-        <li><a href="/Players">Players</a></li>
-        <li><a href="/Sports">Sports</a></li>
-        <li><a href="/States">States</a></li>
-        <li><a href="/Alphabetical">Alphabetical</a></li>
-        <li><a href="/Championships">Championships</a></li>
+        <li><a class="active" href="/">Home</a></li>
+        <li><a href="/game">Add Game</a></li>
+        <li><a href="/Sports">Add Game Review</a></li>
+        <li><a href="/music">Add Music</a></li>
+        <li><a href="/Alphabetical">Add Music Review</a></li>
+        <li><a href="/Championships">Game Tags</a></li>
+        <li><a href="/Championships">Music Tags</a></li>
+        <li><a href="/Championships">Most Reviewed Game</a></li>
+        <li><a href="/Championships">Most Reviewed Music</a></li>
+        <li style="float:right"><a class="active" href="/about">About</a></li>
     </ul>
 </div>
 
 <body>
-  <button type="button" id="createNew">Enter a Team</button> {{{body}}}
+  {{{body}}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
   <script>
-    $('#createNew').on('click', function() {
-      console.log("hi");
+    var socket = io();
+    $('#gEmit').submit(function(){
+      socket.emit('new game', $('.title').val());
+    });
+    socket.on('new game', function(game) {
+      alert("A new game was added to the database: " + game.title);
+    });
+    socket.on('new music', function(music) {
+      alert("New music was added to the database: " + music.title);
+    });
+    $('#SearchGame').keyup(function(){
+      $(".garticle_container").remove();
+      var game = $("#SearchGame").val();
+      if(game == '') {
+        location.reload();
+      }
+      $.get("/api/gamereviews", function(result){
+        $.each(result, function(index, element) {
+          if(element['title'].includes(game)){
+            $("#gameCol").append("<article class=\"garticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['company']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
+          } else {
+            $("#gameCol").append("<h1>No Match!</h1>");
+          }
+        });
+      });
+    });
+    $('#SearchMusic').on('keyup', function(event) {
+      $(".marticle_container").remove();
+      var music = $("#SearchMusic").val();
+      if(music == '') {
+        location.reload();
+      }
+      $.get("/api/musicreviews", function(result){
+        $.each(result, function(index, element) {
+          if(element['title'].includes(music)){
+            $("#musicCol").append("<article class=\"marticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['composer']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
+          } else {
+            $("#musicCol").append("<h1>No Match!</h1>");
+          }
+        });
+      });
     });
   </script>
 </body>

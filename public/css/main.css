@@ -25,3 +25,45 @@ li a {
 li a:hover {
   background-color: #111;
 }
+
+button {
+	border: none;
+	padding: 10px;
+	background-color: #333;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+button:hover {
+  background-color: #bc5a45;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+article {
+    padding: 10px;
+    background-color: #ecf0f1;
+    margin-bottom: 30px;
+    outline-style: solid;
+}
+
+#nono {
+  color: #111;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 275px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+}
