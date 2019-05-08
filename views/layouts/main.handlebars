@@ -26,16 +26,6 @@
   {{{body}}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
   <script>
-    var socket = io();
-    $('#gEmit').submit(function(){
-      socket.emit('new game', $('.title').val());
-    });
-    socket.on('new game', function(game) {
-      alert("A new game was added to the database: " + game.title);
-    });
-    socket.on('new music', function(music) {
-      alert("New music was added to the database: " + music.title);
-    });
     $('#SearchGame').keyup(function(){
       $(".garticle_container").remove();
       var game = $("#SearchGame").val();
@@ -46,13 +36,11 @@
         $.each(result, function(index, element) {
           if(element['title'].includes(game)){
             $("#gameCol").append("<article class=\"garticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['company']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
-          } else {
-            $("#gameCol").append("<h1>No Match!</h1>");
           }
         });
       });
     });
-    $('#SearchMusic').on('keyup', function(event) {
+    $('#SearchMusic').keyup(function() {
       $(".marticle_container").remove();
       var music = $("#SearchMusic").val();
       if(music == '') {
