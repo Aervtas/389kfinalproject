@@ -192,7 +192,7 @@ app.get('/about', function(req, res) {
 });
 
 app.get('/game/remove/:id', function(req, res){
-    Game.findByIdAndRemove(req.param.id, function(err, game){
+    Game.findOneAndDelete({_id: req.params.id}, function(err, game){
       if (!game) {
         res.render('notFound');
       } else {
@@ -203,7 +203,7 @@ app.get('/game/remove/:id', function(req, res){
 });
 
 app.get('/music/remove/:id', function(req, res){
-    Music.findByIdAndRemove(req.param.id, function(err, music){
+    Music.findOneAndDelete({_id: req.params.id}, function(err, music){
       if (!music) {
         res.render('notFound');
       } else {
@@ -214,7 +214,7 @@ app.get('/music/remove/:id', function(req, res){
 });
 
 app.delete('/game/remove/:id', function(req, res){
-  Game.findByIdAndRemove(req.param.id, function(err, game){
+  Game.findOneAndDelete({_id: req.params.id}, function(err, game){
     if (!game) {
       res.render('notFound');
     } else {
@@ -225,7 +225,7 @@ app.delete('/game/remove/:id', function(req, res){
 });
 
 app.delete('/music/remove/:id', function(req, res){
-  Music.findByIdAndRemove(req.param.id, function(err, music){
+  Music.findOneAndDelete({_id: req.params.id}, function(err, music){
     if (!music) {
       res.render('notFound');
     } else {
