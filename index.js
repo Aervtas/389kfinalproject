@@ -203,7 +203,7 @@ app.delete('/game/:id', function(req, res){
   });
 });
 
-app.delete('/music/:id', function(req, res){
+app.delete('/music/remove/:id', function(req, res){
   Music.findByIdAndRemove(req.param.id, function(err, music){
     if (!music) {
       res.render('notFound');
@@ -211,6 +211,24 @@ app.delete('/music/:id', function(req, res){
       console.log("music removed");
       res.redirect('/');
     }
+  });
+});
+
+app.get('/game/:id', function(req, res){
+  Game.findOne({_id: req.params.id}, function(err, game){
+    res.render('display', {
+      data: game,
+      type: 1
+    });
+  });
+});
+
+app.get('/music/:id', function(req, res){
+  Music.findOne({_id: req.params.id}, function(err, music){
+    res.render('display', {
+      data: music,
+      type: 2
+    });
   });
 });
 
