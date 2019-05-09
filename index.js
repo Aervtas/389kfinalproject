@@ -251,6 +251,14 @@ app.get('/music/:id', function(req, res){
   });
 });
 
+app.get('/game/tags', function(req, res){
+  res.render('gameTags');
+});
+
+app.get('/music/tags', function(req, res){
+  res.render('musicTags');
+});
+
 io.on('connection', function(socket) {
     console.log('NEW connection.');
     socket.on('disconnect', function(){
