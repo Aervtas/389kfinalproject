@@ -253,10 +253,6 @@ app.get('/music/:id', function(req, res){
 
 io.on('connection', function(socket) {
     console.log('NEW connection.');
-    socket.on('new game', function(msg) {
-        console.log('msg');
-        io.emit('new game', msg)
-    });
     socket.on('disconnect', function(){
         console.log('A user disconnected.');
       });

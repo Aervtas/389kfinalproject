@@ -26,6 +26,14 @@
   <script src="/socket.io/socket.io.js"></script>
   <script>
     var socket = io();
+    socket.on('new game', function(msg) {
+        console.log('msg');
+        alert("New game has been added to the database: "+msg.title);
+    });
+    socket.on('new music', function(msg) {
+        console.log('msg');
+        alert("New music has been added to the database: "+msg.title);
+    });
     $('#SearchGame').keyup(function(){
       $(".garticle_container").remove();
       var game = $("#SearchGame").val();
