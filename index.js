@@ -252,11 +252,24 @@ app.get('/music/:id', function(req, res){
 });
 
 app.get('/game/tags', function(req, res){
-  res.render('gameTags');
+    res.render('gameTags');
 });
 
 app.get('/music/tags', function(req, res){
-  res.render('musicTags');
+    res.render('musicTags');
+});
+
+app.get('/game/greatest', function(req, res){
+    var tempID;
+    //loop through Game and find game with the most reviews
+    
+    res.redirect('/game/'+tempID);
+});
+
+app.get('/music/greatest', function(req, res){
+    var tempID;
+    //loop through Game and find music with the most reviews
+    res.redirect('/music/'+tempID);
 });
 
 io.on('connection', function(socket) {

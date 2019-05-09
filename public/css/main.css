@@ -3,67 +3,97 @@ body{
 }
 
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
 
 li {
-  float: left;
+    float: left;
 }
 
 li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
 li a:hover {
-  background-color: #111;
+    background-color: #111;
 }
 
 button {
-	border: none;
-	padding: 10px;
-	background-color: #333;
-	color: white;
-	font-size: 20px;
-	font-weight: bold;
+    border: none;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 button:hover {
-  background-color: #bc5a45;
+    background-color: #bc5a45;
 }
 
 .active {
-  background-color: #4CAF50;
+    background-color: #4CAF50;
 }
 
 .row {
-  display: flex;
+    display: flex;
 }
 
 .column {
-  flex: 50%;
+    flex: 50%;
+    border-style: solid;
+    background-color: #f44336;
+    margin: 10px;
 }
 
 article {
     padding: 10px;
     background-color: #ecf0f1;
-    margin-bottom: 30px;
     outline-style: solid;
+    margin: 30px;
 }
 
 #nono {
-  color: #111;
-  font-family: 'Helvetica Neue', sans-serif;
-  font-size: 275px;
-  font-weight: bold;
-  letter-spacing: -1px;
-  line-height: 1;
-  text-align: center;
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 275px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+}
+
+.reviewButton:link, .reviewButton:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    left: 70%;
+}
+
+.reviewButton:hover, .reviewButton:active {
+    background-color: red;
+}
+
+.searchCSS {
+    width: 50%;
+    border: 3px solid #00B4CC;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+    margin: 30px;
+    margin-bottom: 0px;
 }
