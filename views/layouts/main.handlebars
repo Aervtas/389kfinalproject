@@ -11,9 +11,7 @@
     <ul>
         <li><a class="active" href="/">Home</a></li>
         <li><a href="/game">Add Game</a></li>
-        <li><a href="/Sports">Add Game Review</a></li>
         <li><a href="/music">Add Music</a></li>
-        <li><a href="/Alphabetical">Add Music Review</a></li>
         <li><a href="/Championships">Game Tags</a></li>
         <li><a href="/Championships">Music Tags</a></li>
         <li><a href="/Championships">Most Reviewed Game</a></li>
@@ -25,7 +23,9 @@
 <body>
   {{{body}}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
   <script>
+    var socket = io();
     $('#SearchGame').keyup(function(){
       $(".garticle_container").remove();
       var game = $("#SearchGame").val();
