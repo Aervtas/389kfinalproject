@@ -9,7 +9,6 @@ var Music = require('./models/Music');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var gm = require('gm');
 
 // Load envirorment variables
 dotenv.config();
@@ -34,12 +33,7 @@ app.use('/public', express.static('public'));
      process.exit(1);
  });
 
- gm('/images/Gaming.jpg')
- .resize(353, 257)
- .autoOrient()
- .write('/images/ResultGaming.jpg', function (err) {
-   if (!err) console.log('Image was altered.');
- });
+//Let's hope nothing breaks
 
 app.get('/',function(req,res){
   Game.find({}, function(err, games){
@@ -56,8 +50,6 @@ app.get('/',function(req,res){
       });
     });
   });
-
-
 });
 
 app.get('/game', function(req, res){
@@ -89,6 +81,44 @@ app.post('/game', function(req, res) {
 
 //post endpoint for music
 app.post('/music', function(req, res) {
+  var music = new Music({
+      title: req.body.title,
+      genre: req.body.genre.split(" "),
+      year: parseInt(req.body.year),
+      composer: req.body.composer,
+      reviews: []
+  })
+
+  music.save(function(err) {
+      if(err) throw err
+      //return res.send("Music uploaded!")
+      console.log("Music uploaded!");
+      io.emit('new music', music);
+      return res.redirect('/');
+  })
+});
+
+//post endpoint for games
+app.post('/api/game', function(req, res) {
+  var game = new Game({
+      title: req.body.title,
+      genre: req.body.genre.split(" "),
+      year: parseInt(req.body.year),
+      company: req.body.company,
+      reviews: []
+  })
+
+  game.save(function(err) {
+      if(err) throw err
+      //return res.send("Game uploaded!");
+      console.log("Game uploaded!");
+      io.emit('new game', game);
+      return res.redirect('/');
+  })
+});
+
+//post endpoint for music
+app.post('/api/music', function(req, res) {
   var music = new Music({
       title: req.body.title,
       genre: req.body.genre.split(" "),

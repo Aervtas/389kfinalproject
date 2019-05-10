@@ -9,7 +9,7 @@ Date: 5-10-2019
 
 Project Topic: Game and Music Reviews
 
-URL: https://t389kfinalproject.herokuapp.com/
+URL:
 
 ---
 
@@ -54,7 +54,7 @@ Review {
 
 HTML form route: `/game`
 
-POST endpoint route: `/game`
+POST endpoint route: `api/game`
 
 Example Node.js POST request to endpoint:
 ```javascript

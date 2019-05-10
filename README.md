@@ -20,8 +20,26 @@ The website is a games and music review website.
 
 On the submission of music or a game to the database it will notify everyone connected to the site using an alert. This was not done for the reviews because that would just annoy users.
 
+### API
 
-### Beauty of Website
+Post
+- /api/game
+- /api/music
 
-Aesthetically blind.
+Get
+- /api/gamereviews
+- /api/musicreviews
+
+
+### Modules
+
+Used many a modules
+
+### NPM packages
+
+Faker was initially used to generate data for the database.
+
+### User Interface
+
+I'm aesthetically blind.
 Does it look nice?
