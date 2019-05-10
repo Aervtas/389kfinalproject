@@ -39,6 +39,20 @@ Used many a modules
 
 Faker was initially used to generate data for the database.
 
+
+### Five navigation Pages
+
+- Most Reviewed Game
+- Most Reviewed Music
+- Highest Rated Game
+- Highest Rated Music
+- Random Music
+
+### Web Socket
+
+On the submission of music or a game to the database it will notify everyone connected to the site using an alert. This was not done for the reviews because that would just annoy users.
+
+
 ### User Interface
 
 I'm aesthetically blind.

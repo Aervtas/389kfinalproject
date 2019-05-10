@@ -1,64 +1,63 @@
-body{
-    background: #eee;
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("assets/black.jpeg");
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
 
 li {
-    float: left;
+  float: left;
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 li a:hover {
-    background-color: #111;
+  background-color: #111;
 }
 
 button {
-    border: none;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
+  border: none;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 button:hover {
-    background-color: #bc5a45;
+  background-color: #bc5a45;
 }
 
 .active {
-    background-color: #4CAF50;
+  background-color: #4CAF50;
 }
 
 .row {
-    display: flex;
+  display: flex;
 }
 
 .column {
-    flex: 50%;
-    border-style: solid;
-    background-color: #f44336;
-    margin: 10px;
+  flex: 50%;
 }
 
 article {
     padding: 10px;
     background-color: #ecf0f1;
+    margin-bottom: 30px;
     outline-style: solid;
-    margin: 30px;
 }
 
 #nono {
@@ -107,4 +106,60 @@ article {
   display: inline-block;
   position: relative;
   left: 5%;
+}
+
+.garticle_container{
+background-image: url("assets/game1.jpg");
+
+}
+.marticle_container{
+background-image: url("assets/movie2.jpg");
+}
+
+
+#navigation {
+background: url(assets/movie.jpg) top left repeat-x;
+overflow: auto;
+display: block;
+float: left;
+width: 100%;
+}
+#navigation * {
+padding:0;
+margin:0;
+font-family: Georgia, "Times New Roman", Times, serif;
+font-size: 1em;
+}
+#navigation ul {
+display: block;
+float: left;
+padding: 10px 0 0 0;
+}
+#navigation ul li {
+list-style: none;
+float: left;
+margin: 0 0 0 5px;
+}
+#navigation ul li a {
+background: url(assets/movie.jpg) top right no-repeat;
+display: block;
+padding: 0 15px 0 0;
+color: #e0ebf3;
+text-decoration: none
+}
+#navigation ul li a span {
+background: url(images/onlink.png) top left no-repeat;
+display: block;
+padding: 10px 0 10px 15px;
+}
+
+h1{
+color: red;
+}
+
+h3{
+color: white;
+}
+.name{
+  color: blue;
 }
