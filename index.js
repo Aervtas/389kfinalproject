@@ -235,21 +235,7 @@ app.delete('/music/remove/:id', function(req, res){
   });
 });
 
-app.get('/game/:id', function(req, res){
-  Game.findOne({_id: req.params.id}, function(err, game){
-    res.render('display', {
-      data: game
-    });
-  });
-});
 
-app.get('/music/:id', function(req, res){
-  Music.findOne({_id: req.params.id}, function(err, music){
-    res.render('display', {
-      data: music
-    });
-  });
-});
 
 app.get('/game/tags', function(req, res){
     res.render('gameTags');
@@ -260,16 +246,66 @@ app.get('/music/tags', function(req, res){
 });
 
 app.get('/game/greatest', function(req, res){
-    var tempID;
+    var tempID = 0;
+    var tempCheck = 0;
     //loop through Game and find game with the most reviews
-    
-    res.redirect('/game/'+tempID);
+    Game.find({}, function(err, games){
+      if (err) {
+        throw err;
+      }
+      for (var i = 0; i < games.length; i++) {
+        if(games[i].reviews.length >= tempCheck) {
+          tempID = games[i]._id;
+          tempCheck = games[i].reviews.length;
+        }
+      }
+      Game.findOne({_id: tempID}, function(err, game){
+        res.render('display', {
+          data: game
+        });
+      });
+    });
+
 });
 
 app.get('/music/greatest', function(req, res){
     var tempID;
+    var tempCheck = 0;
     //loop through Game and find music with the most reviews
-    res.redirect('/music/'+tempID);
+    Music.find({}, function(err, games){
+      if (err) {
+        throw err;
+      }
+      for (var i = 0; i < games.length; i++) {
+        if(games[i].reviews.length >= tempCheck) {
+          tempID = games[i]._id;
+          tempCheck = games[i].reviews.length;
+        }
+      }
+      Music.findOne({_id: tempID}, function(err, game){
+        res.render('display', {
+          data: game
+        });
+      });
+    });
+});
+
+app.get('/game/:id', function(req, res){
+  Game.findOne({_id: req.params.id}, function(err, game){
+    res.render('display', {
+      data: game
+    });
+  });
+  res.render('notFound');
+});
+
+app.get('/music/:id', function(req, res){
+  Music.findOne({_id: req.params.id}, function(err, music){
+    res.render('display', {
+      data: music
+    });
+  });
+  res.render('notFound');
 });
 
 io.on('connection', function(socket) {
