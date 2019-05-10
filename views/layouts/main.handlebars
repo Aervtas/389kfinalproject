@@ -45,11 +45,12 @@
       $.get("/api/gamereviews", function(result){
         $.each(result, function(index, element) {
           if(element['title'].includes(game)){
-            $("#gameCol").append("<article class=\"garticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['company']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
+            $("#gameCol").append("<a href=\"/game/"+element['_id']+"\"><article class=\"garticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['company']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article></a>");
             temp = 1;
           }
         });
       });
+
       if(temp == 0) {
         $("#gameCol").append("<article class=\"garticle_container\"><h2 class=\"title\">No Match</h2></article>");
       }
