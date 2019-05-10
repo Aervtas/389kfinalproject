@@ -251,12 +251,16 @@ app.get('/music/:id', function(req, res){
   });
 });
 
+app.get('/game/tags', function(req, res){
+  res.render('gameTags');
+});
+
+app.get('/music/tags', function(req, res){
+  res.render('musicTags');
+});
+
 io.on('connection', function(socket) {
     console.log('NEW connection.');
-    socket.on('new game', function(msg) {
-        console.log('msg');
-        io.emit('new game', msg)
-    });
     socket.on('disconnect', function(){
         console.log('A user disconnected.');
       });
