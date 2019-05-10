@@ -10,11 +10,11 @@ The website is a games and music review website.
 
 ### Five navigation Pages
 
--Most Reviewed Game
--Most Reviewed Music
--Highest Rated Game
--Highest Rated Music
--Random Music
+- Most Reviewed Game
+- Most Reviewed Music
+- Highest Rated Game
+- Highest Rated Music
+- Random Music
 
 ### Web Socket
 
