@@ -265,7 +265,6 @@ app.get('/game/greatest', function(req, res){
         });
       });
     });
-
 });
 
 app.get('/music/greatest', function(req, res){
@@ -288,6 +287,64 @@ app.get('/music/greatest', function(req, res){
         });
       });
     });
+});
+
+app.get('/game/best', function(req, res){
+  var tempID = 0;
+  var tempCheck = 0;
+  //loop through Game and find game with the most reviews
+  Game.find({}, function(err, games){
+    if (err) {
+      throw err;
+    }
+    for (var i = 0; i < games.length; i++) {
+      var aver = 0;
+      for (var k = 0; k < games[i].reviews.length; k++) {
+        aver = aver + games[i].reviews[k].rating;
+      }
+      aver = aver / games[i].reviews.length;
+      if (aver >= tempCheck) {
+        tempID = games[i]._id;
+        tempCheck = aver;
+      }
+    }
+    Game.findOne({_id: tempID}, function(err, game){
+      res.render('display', {
+        data: game
+      });
+    });
+  });
+});
+
+app.get('/music/best', function(req, res){
+  var tempID = 0;
+  var tempCheck = 0;
+  //loop through Game and find game with the most reviews
+  Music.find({}, function(err, games){
+    if (err) {
+      throw err;
+    }
+    for (var i = 0; i < games.length; i++) {
+      var aver = 0;
+      for (var k = 0; k < games[i].reviews.length; k++) {
+        aver = aver + games[i].reviews[k].rating;
+      }
+      aver = aver / games[i].reviews.length;
+      if (aver >= tempCheck) {
+        tempID = games[i]._id;
+        tempCheck = aver;
+      }
+    }
+    Music.findOne({_id: tempID}, function(err, game){
+      res.render('display', {
+        data: game
+      });
+    });
+  });
+});
+
+app.get('/music/random', function(req, res){
+
 });
 
 app.get('/game/:id', function(req, res){
