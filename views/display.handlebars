@@ -1,0 +1,32 @@
+<h1>{{data.title}}</h1>
+<hr>
+<b>Year: </b> {{data.year}}
+<br>
+<b>Genre: </b> {{data.genre}}
+<br>
+{{#if data.company}}
+    <b>Company: </b> {{data.company}}
+    <br>
+    <a href="/game/remove/{{{data._id}}}" class="delete">Remove Game</a>
+    <a href="/game/{{{data._id}}}/review" class="reviewButton">Write a review!</a>
+{{else}}
+    <b>Composer: </b> {{data.composer}}
+    <a href="/music/remove/{{{data._id}}}" class="delete">Remove Piece</a>
+    <a href="/music/{{{data._id}}}/review" class="reviewButton">Write a review!</a>
+{{/if}}
+
+<hr>
+{{#each data.reviews}}
+    <article
+        <h4 class="name">By: {{this.author}}, {{this.rating}}</h4>
+        <hr>
+        <div class="">
+            {{this.comment}}
+        </div>
+    </article>
+{{else}}
+<article>
+    <h1>There are no reviews on this game yet.</h1>
+    <a href="">Write your first review!</a>
+</article>
+{{/each}}

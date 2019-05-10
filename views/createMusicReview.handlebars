@@ -1,0 +1,18 @@
+<h1>Add New Review On {{data.title}}</h1>
+<article>
+    <form method="POST" action="/music/{{data._id}}/review">
+        <div class="input-field">
+            <label>Rating:</label>
+            <input type="number" name="rating" min="0" max="5" step=".1" placeholder="3">
+        </div>
+         <div class="input-field">
+            <label>Comment:</label>
+            <input type="text" name="comment" size="100" placeholder="It was great!">
+        </div>
+        <div class="input-field">
+           <label>Written by:</label>
+           <input type="text" name="author" size="50" placeholder="Your name">
+       </div>
+        <button type="submit">Create Music Review</button>
+    </form>
+</article>

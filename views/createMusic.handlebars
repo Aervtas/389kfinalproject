@@ -1,0 +1,22 @@
+<h1>Add New Music to Database</h1>
+<article>
+    <form method="POST" action="/music">
+        <div class="input-field">
+            <label>Title:</label>
+            <input type="text" name="title" size="50" placeholder="1812 Overture">
+        </div>
+         <div class="input-field">
+            <label>Genre:</label>
+            <input type="text" name="genre" size="50" placeholder="Genre1 Genre2 Genre3">
+        </div>
+        <div class="input-field">
+           <label>Year:</label>
+           <input type="number" name="year" min="0" max="2019" placeholder="1880">
+       </div>
+        <div class="input-field">
+            <label>Composer:</label>
+            <input type="text" name="composer" size="50" placeholder="Tchaikovsky">
+        </div>
+        <button type="submit" id="mEmit">Create Music</button>
+    </form>
+</article>

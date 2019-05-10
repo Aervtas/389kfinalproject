@@ -1,1 +1,47 @@
-Home
+<h1>Welcome</h1>
+<div class="row">
+    <div class="column" id="gameCol">
+        <input type="text" id="SearchGame" class="searchCSS" placeholder="Enter a Game">
+        <br>
+        {{#each gdata}}
+        <a href="/game/{{{this._id}}}">
+        <article class="garticle_container">
+            <h2 class="title">{{this.title}}</h2>
+            <h4 class="name">By: {{this.company}}, {{this.year}}</h4>
+            <a href="/game/{{{this._id}}}/review" class="reviewButton">Write a review!</a>
+            <hr>
+            <div class="tags">
+                {{this.genre}}
+            </div>
+        </article>
+        </a>
+        {{else}}
+        <article>
+            <h1>There are no game reviews yet.</h1>
+            <a href="/game">Add a Game!</a>
+        </article>
+        {{/each}}
+    </div>
+    <div class="column" id="musicCol">
+        <input type="text" id="SearchMusic" class="searchCSS" placeholder="Enter a Music">
+        <br>
+        {{#each mdata}}
+        <a href="/music/{{{this._id}}}">
+        <article class="marticle_container">
+            <h2 class="title">{{this.title}}</h2>
+            <h4 class="name">By: {{this.composer}}, {{this.year}}</h4>
+            <a href="/music/{{{this._id}}}/review" class="reviewButton">Write a review!</a>
+            <hr>
+            <div class="tags">
+                {{this.genre}}
+            </div>
+        </article>
+        </a>
+        {{else}}
+        <article>
+            <h1>There are no music reviews yet.</h1>
+            <a href="/music">Add Music!</a>
+        </article>
+        {{/each}}
+    </div>
+</div>
