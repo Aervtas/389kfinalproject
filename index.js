@@ -364,6 +364,7 @@ app.get('/game/:id', function(req, res){
       data: game
     });
   });
+  res.render('notFound');
 });
 
 app.get('/music/:id', function(req, res){
@@ -378,6 +379,7 @@ app.get('/music/:id', function(req, res){
       data: music
     });
   });
+  res.render('notFound');
 });
 
 io.on('connection', function(socket) {
