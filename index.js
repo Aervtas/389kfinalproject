@@ -344,7 +344,12 @@ app.get('/music/best', function(req, res){
 });
 
 app.get('/music/random', function(req, res){
-
+  Music.find({}, function(err, musics){
+    var rand = Math.floor(Math.random() * musics.length) + 0;
+    res.render('display', {
+      data: musics[rand]
+    });
+  });
 });
 
 app.get('/game/:id', function(req, res){
