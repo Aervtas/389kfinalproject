@@ -97,3 +97,14 @@ article {
     margin: 30px;
     margin-bottom: 0px;
 }
+
+.delete:link, .delete:visited {
+  background-color: black;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  left: 5%;
+}

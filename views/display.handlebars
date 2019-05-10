@@ -1,17 +1,20 @@
 <h1>{{data.title}}</h1>
 <hr>
-{{data.year}}
+<b>Year: </b> {{data.year}}
 <br>
-{{data.genre}}
+<b>Genre: </b> {{data.genre}}
 <br>
 {{#if data.company}}
-    {{data.company}}
+    <b>Company: </b> {{data.company}}
     <br>
-    <a href="/game/remove/{{{data._id}}}">Remove Game</a>
+    <a href="/game/remove/{{{data._id}}}" class="delete">Remove Game</a>
+    <a href="/game/{{{data._id}}}/review" class="reviewButton">Write a review!</a>
 {{else}}
-    {{data.composer}}
-    <a href="/music/remove/{{{data._id}}}">Remove Piece</a>
+    <b>Composer: </b> {{data.composer}}
+    <a href="/music/remove/{{{data._id}}}" class="delete">Remove Piece</a>
+    <a href="/music/{{{data._id}}}/review" class="reviewButton">Write a review!</a>
 {{/if}}
+
 <hr>
 {{#each data.reviews}}
     <article

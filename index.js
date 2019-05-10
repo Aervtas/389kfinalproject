@@ -354,20 +354,30 @@ app.get('/music/random', function(req, res){
 
 app.get('/game/:id', function(req, res){
   Game.findOne({_id: req.params.id}, function(err, game){
+    if (err) {
+      res.render('notFound');
+    }
+    if (!game) {
+      res.render('notFound');
+    }
     res.render('display', {
       data: game
     });
   });
-  res.render('notFound');
 });
 
 app.get('/music/:id', function(req, res){
   Music.findOne({_id: req.params.id}, function(err, music){
+    if (err) {
+      res.render('notFound');
+    }
+    if (!music) {
+      res.render('notFound');
+    }
     res.render('display', {
       data: music
     });
   });
-  res.render('notFound');
 });
 
 io.on('connection', function(socket) {
