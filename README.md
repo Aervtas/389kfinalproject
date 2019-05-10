@@ -37,7 +37,7 @@ Used many a modules
 
 ### NPM packages
 
-Faker was initially used to generate data for the database.
+GraphicsMagick was used to alter the gaming image, but the image doesn't show up.
 
 
 ### Five navigation Pages
