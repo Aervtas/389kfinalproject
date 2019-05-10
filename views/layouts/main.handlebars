@@ -65,7 +65,7 @@
       $.get("/api/musicreviews", function(result){
         $.each(result, function(index, element) {
           if(element['title'].includes(music)){
-            $("#musicCol").append("<article class=\"marticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['composer']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
+            $("#musicCol").append("<a href=\"/music/"+element['_id']+"\"><article class=\"marticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['composer']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article></a>");
             temp = 1;
           }
         });
