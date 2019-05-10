@@ -54,7 +54,7 @@ Review {
 
 HTML form route: `/game`
 
-POST endpoint route: `/game`
+POST endpoint route: `api/game`
 
 Example Node.js POST request to endpoint:
 ```javascript
