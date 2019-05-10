@@ -24,20 +24,35 @@
 <body>
   {{{body}}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
   <script>
+    var socket = io();
+    socket.on('new game', function(msg) {
+        console.log('msg');
+        alert("New game has been added to the database: "+msg.title);
+    });
+    socket.on('new music', function(msg) {
+        console.log('msg');
+        alert("New music has been added to the database: "+msg.title);
+    });
     $('#SearchGame').keyup(function(){
       $(".garticle_container").remove();
       var game = $("#SearchGame").val();
       if(game == '') {
         location.reload();
       }
+      var temp = 0;
       $.get("/api/gamereviews", function(result){
         $.each(result, function(index, element) {
           if(element['title'].includes(game)){
             $("#gameCol").append("<article class=\"garticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['company']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
+            temp = 1;
           }
         });
       });
+      if(temp == 0) {
+        $("#gameCol").append("<article class=\"garticle_container\"><h2 class=\"title\">No Match</h2></article>");
+      }
     });
     $('#SearchMusic').keyup(function() {
       $(".marticle_container").remove();
@@ -45,15 +60,18 @@
       if(music == '') {
         location.reload();
       }
+      var temp = 0;
       $.get("/api/musicreviews", function(result){
         $.each(result, function(index, element) {
           if(element['title'].includes(music)){
             $("#musicCol").append("<article class=\"marticle_container\"><h2 class=\"title\">"+element['title']+"</h2><h4 class=\"name\">By: "+element['composer']+", "+element['year']+"</h4><hr><div class=\"tags\">"+element['genre']+"</div></article>");
-          } else {
-            $("#musicCol").append("<h1>No Match!</h1>");
+            temp = 1;
           }
         });
       });
+      if(temp == 0) {
+        $("#musicCol").append("<article class=\"marticle_container\"><h1>No Match</h1></article>");
+      }
     });
   </script>
 </body>
