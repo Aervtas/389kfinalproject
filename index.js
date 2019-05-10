@@ -9,6 +9,7 @@ var Music = require('./models/Music');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var gm = require('gm');
 
 // Load envirorment variables
 dotenv.config();
@@ -33,7 +34,12 @@ app.use('/public', express.static('public'));
      process.exit(1);
  });
 
-//Let's hope nothing breaks
+ gm('/images/Gaming.jpg')
+ .resize(353, 257)
+ .autoOrient()
+ .write('/images/ResultGaming.jpg', function (err) {
+   if (!err) console.log('Image was altered.');
+ });
 
 app.get('/',function(req,res){
   Game.find({}, function(err, games){
