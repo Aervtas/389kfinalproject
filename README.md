@@ -2,7 +2,7 @@
 #### Out: 4/12/19 | Deadline: 5/10/19 11:00 PM
 
 ### Link:
-https://t389kfinalproject.herokuapp.com/
+https://cmsc389k.herokuapp.com/
 
 ### Overview
 
@@ -37,7 +37,7 @@ Used many a modules
 
 ### NPM packages
 
-GraphicsMagick was used to alter the gaming image, but the image doesn't show up.
+GraphicsMagick was attempted to be used to alter the gaming image, but the image doesn't show up.
 
 
 ### Five navigation Pages
