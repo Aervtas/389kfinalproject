@@ -9,7 +9,7 @@ Date: 5-10-2019
 
 Project Topic: Game and Music Reviews
 
-URL: https://t389kfinalproject.herokuapp.com/
+URL: https://cmsc389k.herokuapp.com/
 
 ---
 
